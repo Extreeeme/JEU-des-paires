@@ -29,7 +29,7 @@ function random(tab){ //fonction qui permet de melanger les images
 		tab[j] = x; //j deviens X(pour cette exemple x=lionne)
 	}
 }
-random(tab);
+random(tab);//On appelle la fonction random
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //                                                                           CHOIX DES CARTES                                                         //
@@ -37,12 +37,12 @@ random(tab);
 
  
 function choisir(carte) { // Choix des cartes quand l'utilisateur clique
-	if (norepeat == true){
-		timerID = setInterval("chrono()", 1000); 
+	if (norepeat == true){//empeche le chronometre de se repeter
+		timerID = setInterval("chrono()", 1000);//on appelle la fonction chronometre
 		norepeat = false;
 	}
 	 
-	if (clique == 2) { // Au délà du deuxième clique
+	if (clique == 2) { // Au delà du deuxième clique
 		return; // On affiche rien
 	}
 	if (clique == 0) { // Au premier clique
@@ -64,15 +64,18 @@ function choisir(carte) { // Choix des cartes quand l'utilisateur clique
   //                                                                         VERIFIE LES PAIRES                                                       //
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 function verif() { // Vérifie si une paire a été faite
 	clique = 0;
-	if (tab[choixdeux] ==  tab[choixun]) {
-		paires++;
+	if (tab[choixdeux] ==  tab[choixun]) {//si les deux cartes sont pareilles la paire reste fixe
+		paires++; 
 		document.getElementById("paires").innerHTML = paires;
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
-		document.images[choixun].style.opacity = '0.3';
+		document.images[choixun].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
-		document.images[choixdeux].style.opacity = '0.3';
+		document.images[choixdeux].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
 	} else {
 		document.images[choixun].src = dos;
 		document.images[choixun].style.pointerEvents = 'auto';//Desactive l'evenement du clique(pas de double clique)
@@ -80,10 +83,11 @@ function verif() { // Vérifie si une paire a été faite
 		return;
 	}
 	if (paires==7) {
-		clearInterval(timerID);
+		clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
 		document.getElementById("photo").style.display = 'block';
 		document.getElementById("photo").style.flexDirection = 'column';
-		document.getElementById("photo").innerHTML = '<h1> Vous avez gagné !</h1><br /><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()">';
+		document.getElementById("photo").innerHTML = 
+		'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
 	}
 }
 
@@ -98,19 +102,19 @@ var timerID = 0;
 var sec = 0;
 var min = 0; 
 
-function chrono(){ 
-	if(sec<59){
-		sec++;
+function chrono(){ //Function chronometre
+	if(sec<59){//quand seconde superieur a 59 milliemme
+		sec++;//ajoute une seconde au chronometre
 		if(sec<10){
-			sec = "0" +sec;
+			sec = "0" +sec;//affiche 00 avant le chiffre 1
 		}
 
 	}
-	else if(sec=59){
-		min++;
+	else if(sec=59){//quand seconde superieur a 59 milliemme
+		min++;//ajoute une minute au chronometre
 		sec = "0" + 0;
 	}
-	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";
+	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";//afiche le chronometre dans le html a l'endroit ciblé par l'id
 
 } 
  

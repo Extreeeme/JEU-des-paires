@@ -44,8 +44,9 @@ p {
 	color: red;
 }
 
-.restart {
+.boutton {
 	display: flex;
-	justify-content: center;
+	justify-content:center;
+	border-radius: 5px;
 	border-radius: 5px;
 }
