@@ -1,3 +1,4 @@
+//<<<<<<< HEAD
 var liste = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
 "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"];
 var liste1 = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
@@ -10,6 +11,15 @@ liste.length -=niveau; // reduis le nombre de cartes à afficher pour chaque niv
 liste1.length -=niveau;
 
 var tab = liste.concat(liste1);// Rassemble les deux listes
+/*=======
+var img = 'img';
+var liste = [img+"/ane.jpg", img+"/chat.jpg", img+"/chien.jpg", img+"/lama.jpg", img+"/lapins.jpg", 
+img+"/lionne.jpg", img+"/ours.jpg"];
+var liste2 = [img+"/ane.jpg", img+"/chat.jpg", img+"/chien.jpg", img+"/lama.jpg", img+"/lapins.jpg", 
+img+"/lionne.jpg", img+"/ours.jpg"];
+var tab = liste.concat(liste2);
+
+>>>>>>> anto*/
 
 var dos = 'img/dos.png'; // On définie l'image de dos
 var clique=0;//Nombres de cliques
@@ -73,7 +83,7 @@ function saveCookie3(niveau) {
 
 function afficherimage() {
 	for(i=0; i<=tab.length-1; i++) {
-		document.getElementById("photo").innerHTML += '<img src="img/dos.png" class="photo" onclick="choisir('+i+')" draggable="false">'
+		document.getElementById("photo").innerHTML += '<img src="'+dos+'" class="photo shake-slow" onclick="choisir('+i+')" draggable="false">'
 	}
 }
 
@@ -203,5 +213,49 @@ function chrono(){ //Function chronometre
 	}
 	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";//afiche le chronometre dans le html a l'endroit ciblé par l'id
 
+
 }
 
+
+ 
+   ///////////////////////////////////////////////////////
+  //-------------------choix theme---------------------//
+ ///////////////////////////////////////////////////////
+//{permet à l'utilisateur de choisir un thème}
+
+$('#t1').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/dos.png');//				défini un nouveau dos de carte		
+	dos =  'img/dos.png';				
+	$('#css').attr('href', "css/style.css");//-------------------------charge le fichier css du thème
+//	img = 'img';
+//	changeDossier();	
+});
+$('#t2').click(function(){//----------------------------------------au click sur l'imput												
+	$('#photo img').attr('src', 'img/theme2.jpg');//				défini un nouveau dos de carte	
+	dos =  'img/theme2.jpg';
+	$('#css').attr('href', "css/theme2.css");//-------------------------charge le fichier css du thème
+//	img = 'img2';
+//	changeDossier();	
+});
+$('#t3').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/theme3.jpg');//				défini un nouveau dos de carte
+	dos =  'img/theme3.jpg';							
+	$('#css').attr('href', "css/theme3.css");//-------------------------charge le fichier css du thème	
+//	img = 'img3';
+//	changeDossier();
+});
+$('#t4').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/theme4.png');//				défini un nouveau dos de carte	
+	dos =  'img/theme4.png';					
+	$('#css').attr('href', "css/theme4.css");//-------------------------charge le fichier css du thème	
+//	img = 'img4';
+//	changeDossier();
+});
+$('#t5').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/theme5.png');//				défini un nouveau dos de carte	
+	dos =  'img/theme5.png';					
+	$('#css').attr('href', "css/theme5.css");//-------------------------charge le fichier css du thème	
+	//img = 'img5';
+	//changeDossier();
+
+});

@@ -1,0 +1,81 @@
+body {
+	background-color: #DCD8DC;
+	background-image: url(http://www.faxinfo.fr/wp-content/uploads/2015/07/telecharger-comme-fond-decran-points-gris.jpg);
+	
+
+
+	
+
+}
+
+h1 {
+	text-align: center;
+	
+	
+}
+#paires{
+	font-size: 25px;
+}
+
+#titre {
+	border:1px dashed white;
+	
+	background-color: rgba(255, 0, 0, 0.5);
+}
+#titre h1{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 50px;
+	color: #F5BF00;
+	text-shadow: 0 0 0.2em #2B007C,0 0 0.2em #2B007C,0 0 0.2em #2B007C;
+}
+
+p {
+	text-align: center;
+
+
+}
+.p, label{
+	margin-top: 50px;
+	font-size: 18px;
+	font-family: 'Julius Sans One', sans-serif;
+}
+
+.photo {
+	width: 150px;
+	height: 200px;
+	border:border:1px solid black;
+	border-radius: 15px;
+	
+}
+.photo:hover{
+-moz-box-shadow: 5px 5px 33px 5px #f8ff00;
+-webkit-box-shadow: 5px 5px 33px 5px #f8ff00;
+-o-box-shadow: 5px 5px 33px 5px #f8ff00;
+box-shadow: 5px 5px 33px 5px #f8ff00;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#f8ff00, Direction=134, Strength=33);
+}
+
+#photo {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content: center;
+	justify-content: space-between;
+
+}
+
+#chronotime {
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+.boutton {
+	display: flex;
+	justify-content:center;
+	border-radius: 5px;
+	border-radius: 5px;
+}

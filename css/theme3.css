@@ -1,0 +1,76 @@
+body {
+	background-color: #DCD8DC;
+	background-image: url(http://www.vieux-monthey.ch/wp-content/uploads/2014/07/vieux-papier.jpg);
+}
+
+h1 {
+	text-align: center;
+		
+}
+#paires{
+	font-size: 25px;
+	
+}
+
+#titre {
+	border:1px dashed white;
+	
+	background-color: rgba(168, 119, 0, 0.2); 
+}
+#titre h1{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 50px;
+	color: #8D5E45;
+	text-shadow: 0 0 0.2em #FAD82F;
+}
+
+p {
+	text-align: center;
+
+
+}
+.p, label{
+	margin-top: 50px;
+	font-size: 18px;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: bold;
+}
+
+.photo {
+	width: 150px;
+	height: 200px;
+	border:border:1px solid black;
+	border-radius: 15px;
+	
+}
+.photo:hover{
+-moz-box-shadow: 5px 5px 53px 10px #9a0000;
+-webkit-box-shadow: 5px 5px 53px 10px #9a0000;
+-o-box-shadow: 5px 5px 53px 10px #9a0000;
+box-shadow: 5px 5px 53px 10px #9a0000;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#9a0000, Direction=134, Strength=53);
+}
+#photo {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content: center;
+	justify-content: space-between;
+
+}
+
+#chronotime {
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+.boutton {
+	display: flex;
+	justify-content:center;
+	border-radius: 5px;
+	border-radius: 5px;
+}
