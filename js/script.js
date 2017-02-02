@@ -1,6 +1,16 @@
-var tab = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
-"img/lionne.jpg", "img/ours.jpg", "img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
+var liste = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
 "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"];
+var liste1 = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
+"img/lionne.jpg", "img/ours.jpg"];
+
+var niveau = lireCookie3('niveau');
+
+
+liste.length -=niveau; // reduis le nombre de cartes à afficher pour chaque niveau (valeur a modifier par -1 )
+liste1.length -=niveau;
+
+var tab = liste.concat(liste1);// Rassemble les deux listes
+
 var dos = 'img/dos.png'; // On définie l'image de dos
 var clique=0;//Nombres de cliques
 var paires = 0;//Nombres de paires
@@ -8,16 +18,12 @@ var choixun;//
 var choixdeux;//
 var norepeat = true;//empeche le chrono de se repeter
 
-
-
-
 var highscore = lireCookie('highscore');
 document.getElementById("bestScore").innerHTML="Meilleur score : "+highscore;
 var highTime = lireCookie2('highTime');
 if(highTime != "99:999"){
-	document.getElementById("bestScore").innerHTML="Meilleur temps : "+highTime;
+	document.getElementById("bestTime").innerHTML="Meilleur temps : "+highTime;
 }
-
 
 function lireCookie(name){
 	var nameEQ = name + "=";
@@ -41,13 +47,29 @@ function lireCookie2(name){
 	return "99:999";
 }
 
+function lireCookie3(name){
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return 5;
+}
+
+
 function saveCookie(highscore) {
 	document.cookie = "highscore="+highscore+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
 }
+function saveCookie2(highTime) {
+	document.cookie = "highTime="+highTime+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
+}
+function saveCookie3(niveau) {
+	document.cookie = "niveau="+niveau+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
+}
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //                                                                         AFFICHER LES IMAGES                                                         //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function afficherimage() {
 	for(i=0; i<=tab.length-1; i++) {
@@ -68,10 +90,7 @@ function random(tab){ //fonction qui permet de melanger les images
 }
 random(tab);//On appelle la fonction random
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //                                                                           CHOIX DES CARTES                                                         //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
  
 function choisir(carte) { // Choix des cartes quand l'utilisateur clique
 	if (norepeat == true){//empeche le chronometre de se repeter
@@ -96,16 +115,30 @@ function choisir(carte) { // Choix des cartes quand l'utilisateur clique
 	}	
 }
 
-
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //                                                                         VERIFIE LES PAIRES                                                       //
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+var nulvl; //Chiffre du level
 
 function verif() { // Vérifie si une paire a été faite
 	clique = 0;
+	if(niveau == 5){
+		nulvl = 2;
+	}
+	else if(niveau == 4){
+		nulvl = 3;
+	}
+	else if(niveau == 3){
+		nulvl = 4;
+	}
+	else if(niveau == 2){
+		nulvl = 5;
+	}
+	else if(niveau == 1){
+		nulvl = 6;
+	}
+	else if(niveau == 0){
+		nulvl = 7;
+	}
+
 	if (tab[choixdeux] ==  tab[choixun]) {//si les deux cartes sont pareilles la paire reste fixe
 		paires++; 
 		document.getElementById("paires").innerHTML = paires;
@@ -115,7 +148,6 @@ function verif() { // Vérifie si une paire a été faite
 			document.getElementById("bestScore").innerHTML="Meilleur score : "+highscore;
 			saveCookie(highscore);
 		}
-
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
 		document.images[choixun].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
@@ -126,26 +158,32 @@ function verif() { // Vérifie si une paire a été faite
 		document.images[choixdeux].src = dos;
 		return;
 	}
-	if (paires==7) {
+	if (paires==nulvl) {
 		clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
 		document.getElementById("photo").style.display = 'block';
 		document.getElementById("photo").style.flexDirection = 'column';
 		if (document.getElementById('chronotime').innerHTML <= highTime){
 			highTime = document.getElementById('chronotime').innerHTML;
 			document.getElementById("bestTime").innerHTML="Meilleur temps : "+highTime;
-			saveCookie(highTime);
+			saveCookie2(highTime);
 		}
 		document.getElementById("photo").innerHTML = 
-		'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
+		'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div> <div class"button"><input type="button" class="suivant" value="level suivant" onClick="levelup()"></div>';
 	}
 }
+// PASSAGE DE LVL //
 
+function levelup(){
+    if (niveau != 0){
+    niveau--;
+    saveCookie3(niveau);
+}else{
 
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   }
+    location.reload();
+}				   // Ajoute -1 pour le lengh des listes d'image au clique du boutton lvl suivant
+
   //                                                                         CHRONOMETRE                                                              //
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 var timerID = 0;
 var sec = 0;
@@ -165,28 +203,5 @@ function chrono(){ //Function chronometre
 	}
 	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";//afiche le chronometre dans le html a l'endroit ciblé par l'id
 
-} 
- 
-//  var cookies = 0;
-//  var highscore = 0;
+}
 
-//  if ('highscore'){
-// 	highscore = lireCookie('highscore');
-// 	document.getElementById("score").innerHTML="Vous avez : "+cookies+" Cookies";
-// 	document.getElementById("highscore").innerHTML="Meilleur score : "+highscore;
-// }
-
-// function lireCookie(name){
-// 	var nameEQ = name + "=";
-// 	var ca = document.cookie.split(';');
-// 	for(var i=0;i < ca.length;i++) {
-// 		var c = ca[i];
-// 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-// 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-// 	}
-// 	return 0;
-// }
-
-// function saveCookie(highscore) {
-// 	document.cookie = "highscore="+highscore+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
-// }
