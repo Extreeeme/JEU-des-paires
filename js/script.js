@@ -8,6 +8,43 @@ var choixun;//
 var choixdeux;//
 var norepeat = true;//empeche le chrono de se repeter
 
+
+
+
+var highscore = lireCookie('highscore');
+document.getElementById("bestScore").innerHTML="Meilleur score : "+highscore;
+var highTime = lireCookie2('highTime');
+if(highTime != "99:999"){
+	document.getElementById("bestScore").innerHTML="Meilleur temps : "+highTime;
+}
+
+
+function lireCookie(name){
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return 0;
+}
+
+function lireCookie2(name){
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return "99:999";
+}
+
+function saveCookie(highscore) {
+	document.cookie = "highscore="+highscore+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
+}
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //                                                                         AFFICHER LES IMAGES                                                         //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +109,13 @@ function verif() { // Vérifie si une paire a été faite
 	if (tab[choixdeux] ==  tab[choixun]) {//si les deux cartes sont pareilles la paire reste fixe
 		paires++; 
 		document.getElementById("paires").innerHTML = paires;
+		document.getElementById("bestScore").innerHTML="Meilleur score : "+highscore;
+		if (paires >= highscore){
+			highscore = paires;
+			document.getElementById("bestScore").innerHTML="Meilleur score : "+highscore;
+			saveCookie(highscore);
+		}
+
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
 		document.images[choixun].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
@@ -86,6 +130,11 @@ function verif() { // Vérifie si une paire a été faite
 		clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
 		document.getElementById("photo").style.display = 'block';
 		document.getElementById("photo").style.flexDirection = 'column';
+		if (document.getElementById('chronotime').innerHTML <= highTime){
+			highTime = document.getElementById('chronotime').innerHTML;
+			document.getElementById("bestTime").innerHTML="Meilleur temps : "+highTime;
+			saveCookie(highTime);
+		}
 		document.getElementById("photo").innerHTML = 
 		'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
 	}
@@ -118,4 +167,26 @@ function chrono(){ //Function chronometre
 
 } 
  
- 
+//  var cookies = 0;
+//  var highscore = 0;
+
+//  if ('highscore'){
+// 	highscore = lireCookie('highscore');
+// 	document.getElementById("score").innerHTML="Vous avez : "+cookies+" Cookies";
+// 	document.getElementById("highscore").innerHTML="Meilleur score : "+highscore;
+// }
+
+// function lireCookie(name){
+// 	var nameEQ = name + "=";
+// 	var ca = document.cookie.split(';');
+// 	for(var i=0;i < ca.length;i++) {
+// 		var c = ca[i];
+// 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+// 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+// 	}
+// 	return 0;
+// }
+
+// function saveCookie(highscore) {
+// 	document.cookie = "highscore="+highscore+"; expires=Mon, 1 Mar 2025 00:00:00 UTC; path=/";
+// }
