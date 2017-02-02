@@ -14,7 +14,7 @@ var norepeat = true;//empeche le chrono de se repeter
 
 function afficherimage() {
 	for(i=0; i<=tab.length-1; i++) {
-		document.getElementById("photo").innerHTML += '<img src="img/dos.png" class="photo" onclick="choisir('+i+')" draggable="false">'
+		document.getElementById("photo").innerHTML += '<img src="'+dos+'" class="photo" onclick="choisir('+i+')" draggable="false">'
 	}
 }
 
@@ -118,4 +118,28 @@ function chrono(){ //Function chronometre
 
 } 
  
- 
+   ///////////////////////////////////////////////////////
+  //-------------------choix theme---------------------//
+ ///////////////////////////////////////////////////////
+//{permet à l'utilisateur de choisir un thème}
+
+$('#t1').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/dos.png');//				défini un nouveau dos de carte		
+	dos =  'img/dos.png';				
+	$('#css').attr('href', "css/style.css");//-------------------------charge le fichier css du thème	
+});
+$('#t2').click(function(){//----------------------------------------au click sur l'imput												
+	$('#photo img').attr('src', 'img/theme2.jpg');//				défini un nouveau dos de carte	
+	dos =  'img/theme2.jpg';
+	$('#css').attr('href', "css/theme2.css");//-------------------------charge le fichier css du thème	
+});
+$('#t3').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/theme3.jpg');//				défini un nouveau dos de carte
+	dos =  'img/theme3.jpg';							
+	$('#css').attr('href', "css/theme3.css");//-------------------------charge le fichier css du thème	
+});
+$('#t4').click(function(){//----------------------------------------au click sur l'imput
+	$('#photo img').attr('src', 'img/theme4.png');//				défini un nouveau dos de carte	
+	dos =  'img/theme4.png';					
+	$('#css').attr('href', "css/theme4.css");//-------------------------charge le fichier css du thème	
+});

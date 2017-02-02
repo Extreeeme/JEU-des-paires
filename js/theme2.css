@@ -1,0 +1,74 @@
+body {
+	background-color: #DCD8DC;
+	background-image: url(http://www.faxinfo.fr/wp-content/uploads/2015/07/telecharger-comme-fond-decran-points-gris.jpg);
+	
+
+
+	
+
+}
+
+h1 {
+	text-align: center;
+	
+	
+}
+#paires{
+	font-size: 25px;
+}
+
+#titre {
+	border:1px dashed white;
+	
+	background-color: rgba(255, 0, 0, 0.5);
+}
+#titre h1{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 50px;
+	color: #F5BF00;
+	text-shadow: 0 0 0.2em #2B007C,0 0 0.2em #2B007C,0 0 0.2em #2B007C;
+}
+
+p {
+	text-align: center;
+
+
+}
+.p{
+	margin-top: 50px;
+	font-size: 18px;
+	font-family: 'Julius Sans One', sans-serif;
+}
+
+.photo {
+	width: 150px;
+	height: 200px;
+	border:border:1px solid black;
+	border-radius: 15px;
+	
+}
+
+#photo {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content: center;
+	justify-content: space-between;
+
+}
+
+#chronotime {
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+.boutton {
+	display: flex;
+	justify-content:center;
+	border-radius: 5px;
+	border-radius: 5px;
+}
