@@ -164,12 +164,18 @@ $('#t5').click(function(){//----------------------------------------au click sur
 	//changeDossier();
 
 });
-/*
+
 //Pour changer le dossier des images
+/*
 function changeDossier(){
 	liste2 = new Array;
 	liste = new Array;
 	tab = new Array;
+
+	document.getElementById("photo").innerHTML = '';
+
+	afficherimage();
+	random();
 
 	liste = [img+"/ane.jpg", img+"/chat.jpg", img+"/chien.jpg", img+"/lama.jpg", img+"/lapins.jpg", 
 	img+"/lionne.jpg", img+"/ours.jpg"];
