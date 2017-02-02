@@ -1,0 +1,86 @@
+body {
+	background-color: #DCD8DC;
+	background-image: url(http://maximumwallhd.com/wp-content/uploads/2015/07/fonds-ecran-fleurs-roses-10.jpg);
+}
+
+h1 {
+	text-align: center;
+		
+}
+#paires{
+	font-size: 25px;
+	
+}
+
+#titre {
+	border:1px solid white;
+	background-color: rgba(231, 0, 183, 0.1); 
+	-moz-box-shadow: 5px 5px 53px 8px #656565;
+    -webkit-box-shadow: 5px 5px 53px 8px #656565;
+    -o-box-shadow: 5px 5px 53px 8px #656565;
+    box-shadow: 5px 5px 53px 8px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=53);  
+}
+#titre h1{
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 50px;
+	color: #DECFDB;
+	opacity: 0.6;
+	text-shadow: 0 0 0.2em #DC5BC7,0 0 0.2em #DC5BC7;
+}
+
+p {
+	text-align: center;
+
+
+}
+.p, label{
+	margin-top: 50px;
+	font-size: 18px;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: bold;
+}
+
+.photo {
+	width: 150px;
+	height: 200px;
+	border:border:1px solid black;
+	border-radius: 15px;
+	
+}
+.photo:hover{
+-moz-box-shadow: 5px 5px 53px 10px #EF25AC;
+-webkit-box-shadow: 5px 5px 53px 10px #EF25AC;
+-o-box-shadow: 5px 5px 53px 10px #EF25AC;
+box-shadow: 5px 5px 53px 10px #EF25AC;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#EF25AC, Direction=134, Strength=53);
+width: 155px;
+height: 205px;
+
+}
+
+
+#photo {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content: center;
+	justify-content: space-between;
+
+}
+
+#chronotime {
+	display: flex;
+	justify-content: center;
+	color: #1DA3C4;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+.boutton {
+	display: flex;
+	justify-content:center;
+	border-radius: 5px;
+	border-radius: 5px;
+}

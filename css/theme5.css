@@ -1,0 +1,48 @@
+body {
+    background-color: #008080
+;
+    font-family: 'Snell Roundhand', cursive;
+    color: #FFFFFF
+;    
+    background-image: url('../img/fond.jpg');
+}
+h1 {
+    text-align: center;
+    
+}
+#titre {
+    border:1px solid black;
+    border-radius: 15px;
+    background-color: #C0C0C0
+;
+    box-shadow: 10px 5px 5px silver;
+    font-family: 'Snell Roundhand', cursive;
+}
+p {
+    text-align: center;
+    }
+.photo {
+    width: 150px;
+    height: 200px;
+    border:border:1px solid black;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px black;
+}
+#photo {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+}
+#chronotime {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+.boutton {
+    display: flex;
+    justify-content:center;
+    border-radius: 5px;
+    border-radius: 5px;
+}

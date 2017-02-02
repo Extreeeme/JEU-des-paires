@@ -47,6 +47,13 @@ p {
 	border-radius: 15px;
 	
 }
+.photo:hover{
+-moz-box-shadow: 5px 5px 33px 5px #f8ff00;
+-webkit-box-shadow: 5px 5px 33px 5px #f8ff00;
+-o-box-shadow: 5px 5px 33px 5px #f8ff00;
+box-shadow: 5px 5px 33px 5px #f8ff00;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#f8ff00, Direction=134, Strength=33);
+}
 
 #photo {
 	display: flex;
